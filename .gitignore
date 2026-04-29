@@ -1,2 +1,10 @@
 src/pgm_map_creator
 src/teleop_twist_keyboard
+
+# catkin build artifacts
+build/
+devel/
+
+# Python cache
+__pycache__/
+*.pyc
