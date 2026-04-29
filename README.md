@@ -36,11 +36,13 @@ This project demonstrates the integration of the ROS Navigation stack to solve t
         ├── map.pgm            # Map image file
         └── map.yaml           # Map metadata
     
-    ## Results
-    
-    ### Gazebo Simulation Environment
-    ![Gazebo Simulation](./Screenshot%20from%202026-04-29%2000-23-11.png)
-    
-    ### RViz Convergence of Pose Arrays (AMCL)
-    ![RViz Pose Convergence](./Screenshot%20from%202026-04-29%2000-23-43.png)
+```
+
+## Results
+
+### Gazebo Simulation Environment
+![Gazebo Simulation](./Screenshot%20from%202026-04-29%2000-23-11.png)
+
+### RViz Convergence of Pose Arrays (AMCL)
+![RViz Pose Convergence](./Screenshot%20from%202026-04-29%2000-23-43.png)
     
