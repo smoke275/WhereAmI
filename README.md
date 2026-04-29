@@ -1,44 +1,37 @@
-# GoChaseIt - ROS Ball Chaser Robot 🤖⚽
+# Where Am I? - ROS AMCL Localization 🤖📍
 
-A differential drive robot simulation built with ROS Noetic and Gazebo. The robot autonomously detects a white ball using a camera sensor and drives toward it using a Proportional (P) controller.
+A ROS-based robotics project utilizing the **Adaptive Monte Carlo Localization (AMCL)** stack to localize a mobile robot within a known map environment. The robot uses laser scan data and odometry to estimate its pose, visualized through a converging particle cloud in RViz.
 
-![Robot Simulation](https://img.shields.io/badge/ROS-Noetic-blue) ![Gazebo](https://img.shields.io/badge/Simulation-Gazebo-orange) ![Language](https://img.shields.io/badge/C++-11-green)
+![ROS-Noetic](https://img.shields.io/badge/ROS-Noetic-blue)
+![Gazebo](https://img.shields.io/badge/Simulation-Gazebo-orange)
+![Language](https://img.shields.io/badge/C++-11-green)
 
 ## 📖 Project Overview
-This project consists of two ROS packages working together:
+This project demonstrates the integration of the ROS Navigation stack to solve the localization problem. Key components include:
 
-1.  **`my_robot`**: Defines the physical robot and the simulation environment.
-    * **URDF/Xacro**: A custom differential drive robot with Lidar and Camera sensors.
-    * **Gazebo World**: A custom environment (`perfect.world`) where the robot interacts.
-2.  **`ball_chaser`**: Handles the autonomous control logic.
-    * **`drive_bot`**: A Service Server C++ node that controls the robot's motor velocities.
-    * **`process_image`**: A Service Client C++ node that analyzes camera data to detect the white ball and commands the robot to follow it.
-
-## 🛠️ Prerequisites
-* **OS:** Ubuntu 20.04 (Focal Fossa)
-* **ROS:** Noetic Ninjemys
-* **Simulation:** Gazebo & RViz
-* **Build System:** Catkin
+1. **`my_robot`**: Contains the URDF description of the robot (with Lidar and Camera) and the Gazebo simulation world.
+2. **`localization`**: The core package containing:
+   * **AMCL Node**: Configured for differential drive physics.
+   * **Map Server**: Provides the static map of the environment.
+   * **Move Base**: Enables path planning and navigation to 2D Nav Goals.
 
 ## 📂 Directory Structure
 ```text
 /home/workspace/catkin_ws/src/
 │
-├── my_robot/                      # Package 1: Robot Description & World
+├── my_robot/                  # Robot description & Gazebo environment
 │   ├── launch/
 │   │   ├── robot_description.launch
-│   │   └── world.launch           # Launches Gazebo with 'perfect.world'
+│   │   └── world.launch       # Launches Gazebo world
 │   ├── urdf/
-│   │   ├── my_robot.gazebo        # Gazebo plugins (camera, lidar, drive)
-│   │   └── my_robot.xacro         # Robot structure and link definitions
+│   │   └── my_robot.xacro     # Robot structure
 │   └── worlds/
-│       └── perfect.world          # Custom simulation environment
+│       └── [your_world].world
 │
-└── ball_chaser/                   # Package 2: Control Logic
+└── localization/              # Localization & Navigation logic
+    ├── config/                # Navigation parameter files (YAML)
     ├── launch/
-    │   └── ball_chaser.launch     # Launches drive_bot and process_image nodes
-    ├── srv/
-    │   └── DriveToTarget.srv      # Service definition (linear_x, angular_z)
-    └── src/
-        ├── drive_bot.cpp          # Service Server (Motor Command)
-        └── process_image.cpp      # Service Client (Image Processing & P-Controller)
+    │   └── amcl.launch        # Main localization launch file
+    └── maps/
+        ├── map.pgm            # Map image file
+        └── map.yaml           # Map metadata
