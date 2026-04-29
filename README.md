@@ -40,11 +40,17 @@ This project demonstrates the integration of the ROS Navigation stack to solve t
 
 ## Results
 
-### Gazebo Simulation Environment
-![RViz Pose Convergence](./Screenshot%20from%202026-04-29%2000-23-43.png)
+### Gazebo 3D World — Indoor Environment
+![Gazebo World](./Screenshot%20from%202026-04-29%2014-53-16.png)
 
-### RViz Convergence of Pose Arrays (AMCL)
-![Gazebo Simulation](./Screenshot%20from%202026-04-29%2000-23-11.png)
+### Gazebo Simulation — Top View
+![Gazebo Top View](./Screenshot%20from%202026-04-29%2000-23-43.png)
+
+### RViz — AMCL Particle Cloud (Initial Spread)
+![RViz Initial Particles](./Screenshot%20from%202026-04-29%2000-23-11.png)
+
+### RViz — AMCL Converged Localization
+![RViz Converged](./Screenshot%20from%202026-04-29%2014-52-51.png)
 
 ### Important Repo for PGM Generation
 https://github.com/JZX-MY/pgm_map_creator
